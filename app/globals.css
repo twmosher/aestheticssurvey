@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --ivory: 36 32% 95%;
+  --paper: 38 24% 97%;
+  --charcoal: 18 12% 14%;
+  --muted-ink: 18 10% 34%;
+  --clay: 12 28% 41%;
+  --clay-deep: 10 35% 31%;
+  --stone: 28 16% 76%;
+  --stone-strong: 24 11% 47%;
+  --border: 24 18% 82%;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * {
+    @apply border-[hsl(var(--border))];
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top, hsl(var(--stone) / 0.32), transparent 32rem),
+      linear-gradient(180deg, hsl(var(--paper)) 0%, hsl(var(--ivory)) 32%, hsl(var(--paper)) 100%);
+    color: hsl(var(--charcoal));
+    font-family: var(--font-body);
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: hsl(var(--clay) / 0.18);
+  }
+}
+
+@layer components {
+  .button-primary {
+    @apply inline-flex items-center gap-2 rounded-full border border-transparent bg-[hsl(var(--clay-deep))] px-5 py-3 text-sm font-semibold tracking-[0.02em] text-[hsl(var(--paper))] transition duration-200 hover:bg-[hsl(var(--charcoal))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--clay-deep))];
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center rounded-full border border-[hsl(var(--border))] px-5 py-3 text-sm font-semibold text-[hsl(var(--charcoal))] transition duration-200 hover:border-[hsl(var(--clay))] hover:text-[hsl(var(--clay-deep))];
+  }
+
+  .trust-capsule {
+    @apply inline-flex max-w-full rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--paper)/0.9)] px-4 py-3 text-sm leading-6 text-[hsl(var(--muted-ink))] shadow-[0_1px_0_hsl(var(--stone)/0.35)];
+  }
+
+  .dot-motif {
+    position: absolute;
+    height: 8rem;
+    width: 8rem;
+    opacity: 0.5;
+    background-image: radial-gradient(hsl(var(--clay) / 0.36) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  .grid-motif {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    height: 7rem;
+    width: 10rem;
+    border: 1px solid hsl(var(--border) / 0.95);
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.45;
+  }
+
+  .hero-wash {
+    position: absolute;
+    inset: 1.5rem 0 auto;
+    margin-inline: auto;
+    height: 26rem;
+    max-width: 72rem;
+    background:
+      radial-gradient(circle at 15% 30%, hsl(var(--clay) / 0.12), transparent 28%),
+      radial-gradient(circle at 85% 15%, hsl(var(--stone-strong) / 0.1), transparent 20%);
+    pointer-events: none;
+  }
+
+  .hero-panel {
+    @apply relative overflow-hidden border border-[hsl(var(--border))] bg-[hsl(var(--paper)/0.92)] p-8 shadow-[0_20px_60px_-40px_hsl(var(--charcoal)/0.45)];
+  }
+
+  .hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: 1rem;
+    border: 1px solid hsl(var(--border) / 0.7);
+    pointer-events: none;
+  }
+
+  .hero-panel__topline {
+    height: 1px;
+    width: 100%;
+    background:
+      linear-gradient(90deg, hsl(var(--clay) / 0.55), hsl(var(--border) / 0.15) 78%, transparent);
+  }
+
+  .hero-panel__monogram {
+    margin-top: 2rem;
+    font-family: var(--font-display);
+    font-size: clamp(4.75rem, 8vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.08em;
+    color: hsl(var(--charcoal) / 0.92);
+  }
+
+  .hero-panel__bars {
+    margin-top: 2rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .hero-panel__bar {
+    height: 0.95rem;
+    width: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, hsl(var(--charcoal) / 0.16), hsl(var(--charcoal) / 0.05));
+  }
+
+  .hero-panel__bar--short {
+    width: 72%;
+  }
+
+  .hero-panel__bar--accent {
+    width: 84%;
+    background: linear-gradient(90deg, hsl(var(--clay) / 0.42), hsl(var(--stone-strong) / 0.12));
+  }
+
+  .hero-panel__details {
+    margin-top: 2.25rem;
+    display: grid;
+    gap: 1rem;
+    border-top: 1px solid hsl(var(--border) / 0.95);
+    padding-top: 1.5rem;
+  }
+
+  .hero-panel__detail {
+    height: 4.5rem;
+    border: 1px solid hsl(var(--border) / 0.9);
+    background:
+      linear-gradient(180deg, hsl(var(--paper) / 0.55), transparent),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: auto, 18px 18px;
+  }
+
+  .hero-panel__detail--wide {
+    height: 6.75rem;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
