@@ -1,6 +1,6 @@
-export const SITE_NAME = "Aesthetic Workforce";
+export const SITE_NAME = "Aesthetic Career Club";
 export const REPORT_NAME = "Massachusetts Aesthetic Compensation Report";
-export const CONTACT_EMAIL = "hello@aestheticworkforce.com";
+export const CONTACT_EMAIL = "hello@aestheticcareerclub.com";
 export const SURVEY_PATH = "/survey";
 
 export const HERO_CONTENT = {
@@ -93,27 +93,27 @@ export const PRIVACY_CTA = "Start the Anonymous Survey";
 
 export const ABOUT_PAGE_SECTIONS = [
   {
-    title: "What Aesthetic Workforce is building",
-    body: "Aesthetic Workforce is developing an independent compensation benchmark for medical-aesthetic professionals across Massachusetts. The goal is straightforward: replace fragmented anecdote with better information about pay, structure, and opportunity in a field where compensation is rarely discussed clearly in public.",
+    title: "What Aesthetic Career Club is building",
+    body: "Aesthetic Career Club is building compensation and career intelligence for medical-aesthetic professionals. The 2026 Massachusetts Aesthetic Compensation Report is the current flagship benchmark and the first public product in that broader platform.",
   },
   {
     title: "Who the report is for",
-    body: "The launch report is intended for injectors, aesthetic nurses, nurse practitioners, physician assistants, aestheticians, practice leaders, and other professionals working inside Massachusetts aesthetics. It is designed for people evaluating offers, comparing structures, and trying to understand how compensation varies by role, setting, and experience.",
+    body: "The launch report is intended for injectors, aesthetic nurses, nurse practitioners, physician assistants, aestheticians, practice leaders, and other professionals working inside Massachusetts aesthetics. It is designed for people evaluating offers, comparing structures, and understanding how compensation changes by role, credentials, autonomy, setting, and experience.",
   },
   {
     title: "How the benchmark will work",
-    body: "Participants share compensation information anonymously. Responses are reviewed and ultimately reported only in aggregate. Until there is enough validated data to produce meaningful comparison groups, the site will stay focused on collecting qualified responses and explaining how the benchmark is being prepared.",
+    body: "Participants share compensation information anonymously. Responses are reviewed and ultimately reported only in aggregate. The public launch is Massachusetts-first, but the survey and reporting model are being structured now for broader long-term workforce analysis without sacrificing launch focus.",
   },
 ] as const;
 
 export const PRIVACY_PAGE_SECTIONS = [
   {
     title: "What information is collected",
-    body: "The survey asks about professional role, workplace context, compensation structure, and related career factors needed to build a useful benchmark. Names are not required for the anonymous compensation survey.",
+    body: "The survey asks about professional role, geography, licenses, scope of practice, workplace context, compensation structure, and related career factors needed to build a useful benchmark. Names are not required for the anonymous compensation survey.",
   },
   {
     title: "How the information is used",
-    body: "Submitted responses are used to prepare aggregate compensation reporting for Massachusetts medical-aesthetic professionals. Individual responses are not published, and comparison groups may be withheld when the sample size is too small to protect anonymity.",
+    body: "Submitted responses are used to prepare aggregate compensation reporting for medical-aesthetic professionals, beginning with Massachusetts. Individual responses are not published, and comparison groups may be withheld when the sample size is too small to protect anonymity.",
   },
   {
     title: "How anonymity is protected",
@@ -128,7 +128,7 @@ export const PRIVACY_PAGE_SECTIONS = [
 export const TERMS_PAGE_SECTIONS = [
   {
     title: "Service scope",
-    body: "Aesthetic Workforce provides an informational website, anonymous survey, and compensation-reporting product focused on the Massachusetts medical-aesthetic market. Access to the site does not create an employment, legal, or advisory relationship.",
+    body: "Aesthetic Career Club provides an informational website, anonymous survey, and compensation-reporting product focused initially on the Massachusetts medical-aesthetic market. Access to the site does not create an employment, legal, or advisory relationship.",
   },
   {
     title: "Participant expectations",

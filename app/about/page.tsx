@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata: Metadata = createPageMetadata({
   title: "About",
   description:
-    "Learn why Aesthetic Workforce is building an independent Massachusetts compensation benchmark for medical-aesthetic professionals.",
+    "Learn why Aesthetic Career Club is building a Massachusetts-first compensation benchmark for medical-aesthetic professionals.",
   path: "/about",
 });
 
@@ -16,7 +16,7 @@ export default function AboutPage() {
     <main>
       <SectionShell
         description="An editorial-quality benchmark is only useful if professionals trust both the purpose and the method."
-        title="About Aesthetic Workforce"
+        title="About Aesthetic Career Club"
       >
         <div className="space-y-8">
           {ABOUT_PAGE_SECTIONS.map((section) => (

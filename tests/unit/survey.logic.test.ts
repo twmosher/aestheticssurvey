@@ -8,11 +8,36 @@ describe("survey question config", () => {
   it("preserves the approved survey question inventory", () => {
     expect(SURVEY_QUESTIONS.map((question) => question.id)).toEqual([
       "role",
+      "roleTrack",
+      "personallyPerformsProcedures",
+      "supervisesClinicians",
+      "ownershipStatus",
+      "primaryState",
+      "practicesInMassachusetts",
+      "practicesInMultipleStates",
+      "activeStates",
       "region",
       "aestheticsExperience",
       "healthcareExperience",
       "workplaceType",
       "employerLocationCount",
+      "primaryLicense",
+      "additionalLicenses",
+      "massachusettsLicenseActive",
+      "prescriptiveAuthority",
+      "boardCertified",
+      "boardCertificationType",
+      "independentAssessment",
+      "independentPrescribing",
+      "treatmentPlanSignoffRequired",
+      "prescribingSignoffRequired",
+      "worksUnderMedicalDirector",
+      "isMedicalDirector",
+      "injectorStatus",
+      "laserUnderOwnLicense",
+      "licenseArrangement",
+      "advancedTraining",
+      "deviceCertifications",
       "employmentArrangement",
       "weeklyHours",
       "employerTenure",
@@ -51,7 +76,7 @@ describe("survey question config", () => {
     });
 
     expect(getSurveyQuestion("commissionType")).toMatchObject({
-      label: "What kind of commission structure do you receive?",
+      label: "What kind of commission or production structure do you receive?",
     });
 
     expect(getSurveyQuestion("consented")).toMatchObject({
@@ -86,15 +111,15 @@ describe("survey conditional logic", () => {
     expect(visibleIds).not.toContain("hourlyRate");
   });
 
-  it("shows both hourly rate and annual salary when compensation is mixed", () => {
+  it("does not show hourly or salary prompts for commission-only compensation", () => {
     const answers = createEmptySurveyAnswers({
-      compensationStructure: "salary_plus_hourly",
+      compensationStructure: "commission_only",
     });
 
     const visibleIds = getVisibleSurveyQuestions(answers).map((question) => question.id);
 
-    expect(visibleIds).toContain("hourlyRate");
-    expect(visibleIds).toContain("annualSalary");
+    expect(visibleIds).not.toContain("hourlyRate");
+    expect(visibleIds).not.toContain("annualSalary");
   });
 
   it("shows commission follow-ups only when commission is actually applicable", () => {

@@ -8,6 +8,7 @@ import {
   saveSurveyDraft,
   SURVEY_DRAFT_STORAGE_KEY,
 } from "@/lib/survey/storage";
+import { SURVEY_MAX_STEP_INDEX } from "@/lib/survey/logic";
 
 describe("survey draft storage", () => {
   const originalLocalStorageDescriptor = Object.getOwnPropertyDescriptor(window, "localStorage");
@@ -33,7 +34,7 @@ describe("survey draft storage", () => {
         compensationStructure: "hourly",
         hourlyRate: "92",
         receivesCommission: "yes",
-        commissionType: "percentage_of_services",
+        commissionType: "percentage_of_personal_revenue",
         commissionValue: "12",
       }),
       attribution: {
@@ -79,7 +80,7 @@ describe("survey draft storage", () => {
           role: "definitely_not_a_real_role",
           compensationStructure: "sideways",
           benefits: ["health_insurance", "made_up_benefit"],
-          reasonsToLeave: ["higher_pay", "not_a_real_reason"],
+          reasonsToLeave: ["higher_compensation", "not_a_real_reason"],
           consented: true,
         },
         attribution: {
@@ -94,7 +95,7 @@ describe("survey draft storage", () => {
         anonymousToken: "anon_bad_values",
         answers: createEmptySurveyAnswers({
           benefits: ["health_insurance"],
-          reasonsToLeave: ["higher_pay"],
+          reasonsToLeave: ["higher_compensation"],
           consented: true,
         }),
         attribution: {
@@ -118,9 +119,9 @@ describe("survey draft storage", () => {
             "paid_time_off",
             "health_insurance",
             "paid_time_off",
-            "retirement_plan",
+            "retirement_contribution",
           ],
-          reasonsToLeave: ["higher_pay", "higher_pay", "better_schedule"],
+          reasonsToLeave: ["higher_compensation", "higher_compensation", "better_schedule"],
         },
       }),
     );
@@ -128,8 +129,8 @@ describe("survey draft storage", () => {
     expect(loadSurveyDraft()).toEqual(
       createEmptySurveyDraft({
         answers: createEmptySurveyAnswers({
-          benefits: ["health_insurance", "paid_time_off", "retirement_plan"],
-          reasonsToLeave: ["higher_pay", "better_schedule"],
+          benefits: ["health_insurance", "paid_time_off", "retirement_contribution"],
+          reasonsToLeave: ["higher_compensation", "better_schedule"],
         }),
       }),
     );
@@ -146,7 +147,7 @@ describe("survey draft storage", () => {
 
     expect(loadSurveyDraft()).toEqual(
       createEmptySurveyDraft({
-        currentStepIndex: 29,
+        currentStepIndex: SURVEY_MAX_STEP_INDEX,
         anonymousToken: "anon_far_past_end",
       }),
     );

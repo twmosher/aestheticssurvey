@@ -14,11 +14,36 @@ function nullIfBlankString(value: string | null | undefined) {
 export interface SurveySubmissionRecord {
   anonymous_token: string;
   role: string;
+  role_track: string;
+  personally_performs_procedures: string;
+  supervises_clinicians: string;
+  ownership_status: string;
+  primary_state: string;
+  practices_in_massachusetts: string;
+  practices_in_multiple_states: string;
+  active_states: string[];
   region: string;
   aesthetics_experience: string;
   healthcare_experience: string;
   workplace_type: string;
   employer_location_count: string;
+  primary_license: string;
+  additional_licenses: string[];
+  massachusetts_license_active: string;
+  prescriptive_authority: string;
+  board_certified: string;
+  board_certification_type: string | null;
+  independent_assessment: string;
+  independent_prescribing: string | null;
+  treatment_plan_signoff_required: string;
+  prescribing_signoff_required: string | null;
+  works_under_medical_director: string;
+  is_medical_director: string;
+  injector_status: string | null;
+  laser_under_own_license: string | null;
+  license_arrangement: string;
+  advanced_training: string[];
+  device_certifications: string[];
   employment_arrangement: string;
   weekly_hours: string;
   employer_tenure: string;
@@ -65,11 +90,36 @@ export function toSurveySubmissionRecord(
   return {
     anonymous_token: submission.anonymousToken,
     role: answers.role,
+    role_track: answers.roleTrack,
+    personally_performs_procedures: answers.personallyPerformsProcedures,
+    supervises_clinicians: answers.supervisesClinicians,
+    ownership_status: answers.ownershipStatus,
+    primary_state: answers.primaryState,
+    practices_in_massachusetts: answers.practicesInMassachusetts,
+    practices_in_multiple_states: answers.practicesInMultipleStates,
+    active_states: [...answers.activeStates],
     region: answers.region,
     aesthetics_experience: answers.aestheticsExperience,
     healthcare_experience: answers.healthcareExperience,
     workplace_type: answers.workplaceType,
     employer_location_count: answers.employerLocationCount,
+    primary_license: answers.primaryLicense,
+    additional_licenses: [...answers.additionalLicenses],
+    massachusetts_license_active: answers.massachusettsLicenseActive,
+    prescriptive_authority: answers.prescriptiveAuthority,
+    board_certified: answers.boardCertified,
+    board_certification_type: nullIfEmpty(answers.boardCertificationType),
+    independent_assessment: answers.independentAssessment,
+    independent_prescribing: nullIfEmpty(answers.independentPrescribing),
+    treatment_plan_signoff_required: answers.treatmentPlanSignoffRequired,
+    prescribing_signoff_required: nullIfEmpty(answers.prescribingSignoffRequired),
+    works_under_medical_director: answers.worksUnderMedicalDirector,
+    is_medical_director: answers.isMedicalDirector,
+    injector_status: nullIfEmpty(answers.injectorStatus),
+    laser_under_own_license: nullIfEmpty(answers.laserUnderOwnLicense),
+    license_arrangement: answers.licenseArrangement,
+    advanced_training: [...answers.advancedTraining],
+    device_certifications: [...answers.deviceCertifications],
     employment_arrangement: answers.employmentArrangement,
     weekly_hours: answers.weeklyHours,
     employer_tenure: answers.employerTenure,

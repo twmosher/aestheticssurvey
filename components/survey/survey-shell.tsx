@@ -147,6 +147,10 @@ function isPositiveCurrency(value: string) {
 function validateQuestion(question: SurveyQuestion, answers: SurveyAnswers) {
   const value = answers[question.id];
 
+  if (question.required === false) {
+    return null;
+  }
+
   if (question.input === "consent") {
     return value === true ? null : getRequiredMessage(question);
   }

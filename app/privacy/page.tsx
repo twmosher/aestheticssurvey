@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata: Metadata = createPageMetadata({
   title: "Privacy",
   description:
-    "Read the plain-English privacy commitments for the Aesthetic Workforce compensation benchmark.",
+    "Read the plain-English privacy commitments for the Aesthetic Career Club compensation benchmark.",
   path: "/privacy",
 });
 

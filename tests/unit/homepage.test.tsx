@@ -83,8 +83,8 @@ describe("homepage", () => {
     expect(screen.getByRole("link", { name: "Terms" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Contact" })).toHaveAttribute(
       "href",
-      "mailto:hello@aestheticworkforce.com",
+      "mailto:hello@aestheticcareerclub.com",
     );
-    expect(screen.getByText(/Copyright © 2026 Aesthetic Workforce/i)).toBeInTheDocument();
+    expect(screen.getByText(/Copyright © 2026 Aesthetic Career Club/i)).toBeInTheDocument();
   });
 });

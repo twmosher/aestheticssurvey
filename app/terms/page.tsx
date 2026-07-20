@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata: Metadata = createPageMetadata({
   title: "Terms",
   description:
-    "Review the launch terms for the Aesthetic Workforce website, survey, and future compensation reporting.",
+    "Review the launch terms for the Aesthetic Career Club website, survey, and future compensation reporting.",
   path: "/terms",
 });
 

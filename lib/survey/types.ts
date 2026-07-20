@@ -2,6 +2,7 @@ export type YesNoAnswer = "yes" | "no";
 
 export type SurveySection =
   | "Professional profile"
+  | "Credentials and scope"
   | "Work structure"
   | "Compensation"
   | "Skills and production"
@@ -19,11 +20,36 @@ export type SurveyInputKind =
 
 export type SurveyDatabaseField =
   | "role"
+  | "role_track"
+  | "personally_performs_procedures"
+  | "supervises_clinicians"
+  | "ownership_status"
+  | "primary_state"
+  | "practices_in_massachusetts"
+  | "practices_in_multiple_states"
+  | "active_states"
   | "region"
   | "aesthetics_experience"
   | "healthcare_experience"
   | "workplace_type"
   | "employer_location_count"
+  | "primary_license"
+  | "additional_licenses"
+  | "massachusetts_license_active"
+  | "prescriptive_authority"
+  | "board_certified"
+  | "board_certification_type"
+  | "independent_assessment"
+  | "independent_prescribing"
+  | "treatment_plan_signoff_required"
+  | "prescribing_signoff_required"
+  | "works_under_medical_director"
+  | "is_medical_director"
+  | "injector_status"
+  | "laser_under_own_license"
+  | "license_arrangement"
+  | "advanced_training"
+  | "device_certifications"
   | "employment_arrangement"
   | "weekly_hours"
   | "employer_tenure"
@@ -62,14 +88,32 @@ export type RoleAnswer =
   | "medical_director"
   | "other";
 
+export type RoleTrackAnswer = "clinical" | "operational" | "ownership" | "hybrid";
+
+export type StateAnswer =
+  | "massachusetts"
+  | "connecticut"
+  | "rhode_island"
+  | "new_hampshire"
+  | "maine"
+  | "vermont"
+  | "new_york"
+  | "new_jersey"
+  | "florida"
+  | "california"
+  | "texas"
+  | "other_us_state";
+
 export type RegionAnswer =
-  | "greater_boston"
+  | "boston"
+  | "cambridge_somerville"
   | "north_shore"
+  | "metrowest"
   | "south_shore"
-  | "cape_and_islands"
   | "central_massachusetts"
   | "western_massachusetts"
-  | "statewide_multi_region";
+  | "cape_cod_and_islands"
+  | "other_massachusetts";
 
 export type ExperienceAnswer =
   | "under_1_year"
@@ -79,12 +123,13 @@ export type ExperienceAnswer =
   | "more_than_ten_years";
 
 export type WorkplaceTypeAnswer =
-  | "med_spa"
+  | "independent_med_spa"
+  | "multi_location_med_spa_group"
   | "dermatology_practice"
   | "plastic_surgery_practice"
-  | "physician_owned_aesthetic_office"
-  | "multi_location_group"
-  | "specialty_clinic"
+  | "hospital_or_health_system"
+  | "wellness_or_longevity_clinic"
+  | "self_employed"
   | "other";
 
 export type EmployerLocationCountAnswer =
@@ -94,12 +139,70 @@ export type EmployerLocationCountAnswer =
   | "more_than_ten_locations"
   | "not_sure";
 
+export type PrimaryLicenseAnswer =
+  | "rn"
+  | "np"
+  | "pa"
+  | "md_do"
+  | "licensed_aesthetician"
+  | "laser_certified_technician"
+  | "practice_administrator"
+  | "none_nonclinical"
+  | "other";
+
+export type AdditionalLicenseAnswer =
+  | "rn"
+  | "np"
+  | "pa"
+  | "md_do"
+  | "licensed_aesthetician"
+  | "laser_certified_technician"
+  | "prescriber"
+  | "managerial"
+  | "other";
+
+export type BoardCertificationTypeAnswer =
+  | "dermatology"
+  | "plastic_surgery"
+  | "family_medicine"
+  | "internal_medicine"
+  | "emergency_medicine"
+  | "nurse_practitioner"
+  | "physician_assistant"
+  | "aesthetic_or_laser"
+  | "other";
+
+export type LicenseArrangementAnswer =
+  | "under_my_own_license"
+  | "under_another_clinicians_license"
+  | "delegated_arrangement"
+  | "not_applicable";
+
+export type AdvancedTrainingAnswer =
+  | "manufacturer_training"
+  | "cadaver_training"
+  | "advanced_injector_coursework"
+  | "laser_safety_training"
+  | "business_or_management_training"
+  | "formal_fellowship_or_preceptorship"
+  | "none"
+  | "other";
+
+export type DeviceCertificationAnswer =
+  | "laser_safety_officer"
+  | "manufacturer_device_certification"
+  | "coolsculpting_or_body_contouring"
+  | "radiofrequency_or_ultrasound"
+  | "ipl_or_photofacial"
+  | "none"
+  | "other";
+
 export type EmploymentArrangementAnswer =
   | "full_time_employee"
   | "part_time_employee"
   | "independent_contractor"
   | "per_diem"
-  | "owner_partner"
+  | "owner"
   | "other";
 
 export type WeeklyHoursAnswer =
@@ -116,112 +219,165 @@ export type EmployerTenureAnswer =
   | "3_to_5_years"
   | "more_than_5_years";
 
-export type RestrictiveAgreementAnswer = YesNoAnswer | "not_sure";
+export type RestrictiveAgreementAnswer =
+  | YesNoAnswer
+  | "not_sure"
+  | "prefer_not_to_say";
 
 export type CompensationStructureAnswer =
   | "hourly"
   | "salary"
-  | "salary_plus_hourly"
-  | "salary_plus_commission"
-  | "hourly_plus_commission"
   | "commission_only"
+  | "hourly_plus_commission"
+  | "salary_plus_commission"
+  | "production_bonus"
   | "other";
 
 export type CommissionTypeAnswer =
-  | "percentage_of_services"
-  | "tiered_percentage"
-  | "flat_bonus"
-  | "draw_against_commission"
-  | "hybrid"
+  | "percentage_of_personal_revenue"
+  | "percentage_of_collected_revenue"
+  | "percentage_of_profit"
+  | "per_treatment_bonus"
+  | "tiered_production_bonus"
+  | "retail_commission"
+  | "tips"
   | "other";
 
 export type TotalAnnualEarningsRangeAnswer =
-  | "under_75000"
+  | "under_50000"
+  | "50000_to_74999"
   | "75000_to_99999"
   | "100000_to_124999"
   | "125000_to_149999"
   | "150000_to_199999"
   | "200000_to_249999"
-  | "250000_or_more";
+  | "250000_or_more"
+  | "prefer_not_to_say";
 
 export type BenefitAnswer =
   | "health_insurance"
-  | "dental_or_vision"
+  | "dental_insurance"
+  | "retirement_contribution"
   | "paid_time_off"
-  | "retirement_plan"
-  | "continuing_education"
+  | "paid_training"
   | "free_or_discounted_treatments"
-  | "parental_leave"
-  | "bonus_program"
-  | "none";
+  | "product_discounts"
+  | "malpractice_coverage"
+  | "continuing_education_allowance"
+  | "none"
+  | "other";
 
 export type ServicePerformedAnswer =
   | "neuromodulators"
-  | "dermal_fillers"
+  | "dermal_filler"
   | "biostimulators"
+  | "prp_or_prf"
   | "laser_treatments"
-  | "energy_devices"
+  | "ipl"
+  | "microneedling"
+  | "radiofrequency_treatments"
   | "body_contouring"
-  | "facials_or_peels"
-  | "consultations_only"
+  | "facials_and_skin_treatments"
+  | "weight_management_services"
+  | "consultations_and_treatment_planning"
   | "other";
 
 export type InjectableVolumeRangeAnswer =
   | "none"
-  | "1_to_20"
-  | "21_to_40"
-  | "41_to_60"
-  | "61_to_100"
+  | "1_to_10"
+  | "11_to_25"
+  | "26_to_50"
+  | "51_to_100"
   | "more_than_100";
 
 export type MonthlyRevenueRangeAnswer =
-  | "under_25000"
+  | "do_not_know"
+  | "under_10000"
+  | "10000_to_24999"
   | "25000_to_49999"
   | "50000_to_74999"
   | "75000_to_99999"
-  | "100000_to_149999"
-  | "150000_or_more"
-  | "not_tracked";
+  | "100000_or_more"
+  | "prefer_not_to_say";
 
 export type RequestedPatientPercentageRangeAnswer =
-  | "under_10"
-  | "10_to_24"
-  | "25_to_49"
-  | "50_to_74"
-  | "75_or_more"
+  | "under_10_percent"
+  | "10_to_24_percent"
+  | "25_to_49_percent"
+  | "50_to_74_percent"
+  | "75_percent_or_more"
   | "not_sure";
 
 export type SalesExpectationAnswer =
-  | "minimal"
-  | "moderate"
-  | "high"
-  | "very_high";
+  | "yes_formally_measured"
+  | "yes_informally_expected"
+  | "no"
+  | "not_sure";
 
-export type FairnessScoreAnswer = "1" | "2" | "3" | "4" | "5";
+export type FairnessScoreAnswer =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10";
 
 export type JobMobilityAnswer =
-  | "not_open"
-  | "somewhat_open"
-  | "actively_exploring"
-  | "ready_to_move_for_the_right_offer";
+  | "very_unlikely"
+  | "unlikely"
+  | "open_to_hearing"
+  | "likely"
+  | "actively_looking";
 
 export type ReasonToLeaveAnswer =
-  | "higher_pay"
+  | "higher_compensation"
   | "better_schedule"
+  | "stronger_leadership"
+  | "more_training"
+  | "more_autonomy"
   | "better_benefits"
-  | "more_support"
-  | "clearer_growth_path"
-  | "less_sales_pressure"
-  | "leadership_issues"
-  | "want_to_start_or_join_a_practice";
+  | "more_advanced_treatments"
+  | "better_workplace_culture"
+  | "ownership_opportunity"
+  | "less_pressure_to_sell"
+  | "other";
 
 export interface SurveyAnswers {
   role: RoleAnswer | "";
+  roleTrack: RoleTrackAnswer | "";
+  personallyPerformsProcedures: YesNoAnswer | "";
+  supervisesClinicians: YesNoAnswer | "";
+  ownershipStatus: "employee" | "minority_owner" | "majority_owner" | "sole_owner" | "";
+  primaryState: StateAnswer | "";
+  practicesInMassachusetts: YesNoAnswer | "";
+  practicesInMultipleStates: YesNoAnswer | "";
+  activeStates: StateAnswer[];
   region: RegionAnswer | "";
   aestheticsExperience: ExperienceAnswer | "";
   healthcareExperience: ExperienceAnswer | "";
   workplaceType: WorkplaceTypeAnswer | "";
   employerLocationCount: EmployerLocationCountAnswer | "";
+  primaryLicense: PrimaryLicenseAnswer | "";
+  additionalLicenses: AdditionalLicenseAnswer[];
+  massachusettsLicenseActive: YesNoAnswer | "";
+  prescriptiveAuthority: YesNoAnswer | "";
+  boardCertified: YesNoAnswer | "";
+  boardCertificationType: BoardCertificationTypeAnswer | "";
+  independentAssessment: YesNoAnswer | "";
+  independentPrescribing: YesNoAnswer | "";
+  treatmentPlanSignoffRequired: YesNoAnswer | "";
+  prescribingSignoffRequired: YesNoAnswer | "";
+  worksUnderMedicalDirector: YesNoAnswer | "";
+  isMedicalDirector: YesNoAnswer | "";
+  injectorStatus: YesNoAnswer | "";
+  laserUnderOwnLicense: YesNoAnswer | "";
+  licenseArrangement: LicenseArrangementAnswer | "";
+  advancedTraining: AdvancedTrainingAnswer[];
+  deviceCertifications: DeviceCertificationAnswer[];
   employmentArrangement: EmploymentArrangementAnswer | "";
   weeklyHours: WeeklyHoursAnswer | "";
   employerTenure: EmployerTenureAnswer | "";
@@ -271,6 +427,7 @@ export interface SurveyQuestion<TId extends SurveyQuestionId = SurveyQuestionId>
   section: SurveySection;
   label: string;
   description?: string;
+  required?: boolean;
   input: SurveyInputKind;
   options?: readonly SurveyQuestionOption<SurveyQuestionOptionValue<TId>>[];
   visibleWhen?: (answers: SurveyAnswers) => boolean;

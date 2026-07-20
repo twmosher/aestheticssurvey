@@ -72,6 +72,26 @@ function normalizeAnswers(value: unknown): SurveyAnswers {
 
   return {
     role: normalizeSelectableValue("role", value.role),
+    roleTrack: normalizeSelectableValue("roleTrack", value.roleTrack),
+    personallyPerformsProcedures: normalizeSelectableValue(
+      "personallyPerformsProcedures",
+      value.personallyPerformsProcedures,
+    ),
+    supervisesClinicians: normalizeSelectableValue(
+      "supervisesClinicians",
+      value.supervisesClinicians,
+    ),
+    ownershipStatus: normalizeSelectableValue("ownershipStatus", value.ownershipStatus),
+    primaryState: normalizeSelectableValue("primaryState", value.primaryState),
+    practicesInMassachusetts: normalizeSelectableValue(
+      "practicesInMassachusetts",
+      value.practicesInMassachusetts,
+    ),
+    practicesInMultipleStates: normalizeSelectableValue(
+      "practicesInMultipleStates",
+      value.practicesInMultipleStates,
+    ),
+    activeStates: normalizeSelectableArray("activeStates", value.activeStates),
     region: normalizeSelectableValue("region", value.region),
     aestheticsExperience: normalizeSelectableValue(
       "aestheticsExperience",
@@ -85,6 +105,53 @@ function normalizeAnswers(value: unknown): SurveyAnswers {
     employerLocationCount: normalizeSelectableValue(
       "employerLocationCount",
       value.employerLocationCount,
+    ),
+    primaryLicense: normalizeSelectableValue("primaryLicense", value.primaryLicense),
+    additionalLicenses: normalizeSelectableArray("additionalLicenses", value.additionalLicenses),
+    massachusettsLicenseActive: normalizeSelectableValue(
+      "massachusettsLicenseActive",
+      value.massachusettsLicenseActive,
+    ),
+    prescriptiveAuthority: normalizeSelectableValue(
+      "prescriptiveAuthority",
+      value.prescriptiveAuthority,
+    ),
+    boardCertified: normalizeSelectableValue("boardCertified", value.boardCertified),
+    boardCertificationType: normalizeSelectableValue(
+      "boardCertificationType",
+      value.boardCertificationType,
+    ),
+    independentAssessment: normalizeSelectableValue(
+      "independentAssessment",
+      value.independentAssessment,
+    ),
+    independentPrescribing: normalizeSelectableValue(
+      "independentPrescribing",
+      value.independentPrescribing,
+    ),
+    treatmentPlanSignoffRequired: normalizeSelectableValue(
+      "treatmentPlanSignoffRequired",
+      value.treatmentPlanSignoffRequired,
+    ),
+    prescribingSignoffRequired: normalizeSelectableValue(
+      "prescribingSignoffRequired",
+      value.prescribingSignoffRequired,
+    ),
+    worksUnderMedicalDirector: normalizeSelectableValue(
+      "worksUnderMedicalDirector",
+      value.worksUnderMedicalDirector,
+    ),
+    isMedicalDirector: normalizeSelectableValue("isMedicalDirector", value.isMedicalDirector),
+    injectorStatus: normalizeSelectableValue("injectorStatus", value.injectorStatus),
+    laserUnderOwnLicense: normalizeSelectableValue(
+      "laserUnderOwnLicense",
+      value.laserUnderOwnLicense,
+    ),
+    licenseArrangement: normalizeSelectableValue("licenseArrangement", value.licenseArrangement),
+    advancedTraining: normalizeSelectableArray("advancedTraining", value.advancedTraining),
+    deviceCertifications: normalizeSelectableArray(
+      "deviceCertifications",
+      value.deviceCertifications,
     ),
     employmentArrangement: normalizeSelectableValue(
       "employmentArrangement",

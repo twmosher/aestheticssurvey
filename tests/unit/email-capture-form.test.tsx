@@ -60,7 +60,7 @@ describe("EmailCaptureForm", () => {
       target: { value: "alex@example.com" },
     });
     fireEvent.click(screen.getByRole("checkbox"));
-    fireEvent.click(screen.getByRole("button", { name: "Send me the benchmark" }));
+    fireEvent.click(screen.getByRole("button", { name: "Send My Benchmark" }));
 
     await waitFor(() => {
       expect(globalThis.fetch).toHaveBeenCalledWith(

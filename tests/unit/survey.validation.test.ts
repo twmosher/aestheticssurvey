@@ -10,11 +10,33 @@ function createValidSubmissionPayload() {
     anonymousToken: "anon_12345",
     answers: createEmptySurveyAnswers({
       role: "nurse_injector",
-      region: "greater_boston",
+      roleTrack: "clinical",
+      personallyPerformsProcedures: "yes",
+      supervisesClinicians: "no",
+      ownershipStatus: "employee",
+      primaryState: "massachusetts",
+      practicesInMassachusetts: "yes",
+      practicesInMultipleStates: "no",
+      activeStates: [],
+      region: "boston",
       aestheticsExperience: "three_to_five_years",
       healthcareExperience: "six_to_ten_years",
-      workplaceType: "med_spa",
+      workplaceType: "independent_med_spa",
       employerLocationCount: "two_to_three_locations",
+      primaryLicense: "rn",
+      additionalLicenses: [],
+      massachusettsLicenseActive: "yes",
+      prescriptiveAuthority: "no",
+      boardCertified: "no",
+      independentAssessment: "yes",
+      treatmentPlanSignoffRequired: "no",
+      worksUnderMedicalDirector: "yes",
+      isMedicalDirector: "no",
+      injectorStatus: "yes",
+      laserUnderOwnLicense: "no",
+      licenseArrangement: "under_my_own_license",
+      advancedTraining: ["manufacturer_training"],
+      deviceCertifications: ["none"],
       employmentArrangement: "full_time_employee",
       weeklyHours: "30_to_39",
       employerTenure: "1_to_2_years",
@@ -23,19 +45,19 @@ function createValidSubmissionPayload() {
       hourlyRate: " $95.50 ",
       annualSalary: "",
       receivesCommission: "yes",
-      commissionType: "percentage_of_services",
+      commissionType: "percentage_of_personal_revenue",
       commissionValue: "12%",
       totalAnnualEarningsRange: "125000_to_149999",
       benefits: ["health_insurance", "paid_time_off"],
-      servicesPerformed: ["neuromodulators", "dermal_fillers"],
-      injectableVolumeRange: "21_to_40",
+      servicesPerformed: ["neuromodulators", "dermal_filler"],
+      injectableVolumeRange: "26_to_50",
       monthlyRevenueRange: "50000_to_74999",
       bringsPatientFollowing: "yes",
-      requestedPatientPercentageRange: "25_to_49",
-      salesExpectation: "moderate",
+      requestedPatientPercentageRange: "25_to_49_percent",
+      salesExpectation: "yes_informally_expected",
       compensationFairnessScore: "3",
-      jobMobility: "somewhat_open",
-      reasonsToLeave: ["higher_pay"],
+      jobMobility: "open_to_hearing",
+      reasonsToLeave: ["higher_compensation"],
       compensationFrustration: " Base pay still lags behind output. ",
       employerRetentionFeedback: " They underinvest in support staff. ",
       consented: true,
@@ -149,7 +171,7 @@ describe("survey submission transformer", () => {
       hourly_rate: 95.5,
       annual_salary: null,
       receives_commission: "yes",
-      commission_type: "percentage_of_services",
+      commission_type: "percentage_of_personal_revenue",
       commission_value: "12%",
       compensation_fairness_score: 3,
       compensation_frustration: "Base pay still lags behind output.",
@@ -164,9 +186,11 @@ describe("survey submission transformer", () => {
       user_agent: "Vitest Browser",
     });
 
+    expect(record.primary_state).toBe("massachusetts");
+    expect(record.primary_license).toBe("rn");
     expect(record.benefits).toEqual(["health_insurance", "paid_time_off"]);
-    expect(record.services_performed).toEqual(["neuromodulators", "dermal_fillers"]);
-    expect(record.reasons_to_leave).toEqual(["higher_pay"]);
+    expect(record.services_performed).toEqual(["neuromodulators", "dermal_filler"]);
+    expect(record.reasons_to_leave).toEqual(["higher_compensation"]);
   });
 });
 

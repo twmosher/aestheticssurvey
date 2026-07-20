@@ -211,7 +211,7 @@ export function EmailCaptureForm() {
             type="checkbox"
           />
           <span className="text-sm leading-6 text-[hsl(var(--charcoal))]">
-            I agree to receive benchmark updates and report emails from Aesthetic Workforce. You
+            I agree to receive benchmark updates and report emails from Aesthetic Career Club. You
             can unsubscribe at any time.
           </span>
         </label>
@@ -226,7 +226,7 @@ export function EmailCaptureForm() {
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <button className="button-primary" disabled={isSubmitting} type="submit">
-            {isSubmitting ? "Saving…" : "Send me the benchmark"}
+            {isSubmitting ? "Saving…" : "Send My Benchmark"}
           </button>
           <button
             className="button-secondary justify-center"

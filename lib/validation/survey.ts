@@ -98,11 +98,36 @@ function createInvalidCurrencyMessage(questionId: "hourlyRate" | "annualSalary")
 const surveyAnswersSchema = z
   .object({
     role: createSelectableAnswerSchema("role"),
+    roleTrack: createSelectableAnswerSchema("roleTrack"),
+    personallyPerformsProcedures: createSelectableAnswerSchema("personallyPerformsProcedures"),
+    supervisesClinicians: createSelectableAnswerSchema("supervisesClinicians"),
+    ownershipStatus: createSelectableAnswerSchema("ownershipStatus"),
+    primaryState: createSelectableAnswerSchema("primaryState"),
+    practicesInMassachusetts: createSelectableAnswerSchema("practicesInMassachusetts"),
+    practicesInMultipleStates: createSelectableAnswerSchema("practicesInMultipleStates"),
+    activeStates: createMultiSelectAnswerSchema("activeStates"),
     region: createSelectableAnswerSchema("region"),
     aestheticsExperience: createSelectableAnswerSchema("aestheticsExperience"),
     healthcareExperience: createSelectableAnswerSchema("healthcareExperience"),
     workplaceType: createSelectableAnswerSchema("workplaceType"),
     employerLocationCount: createSelectableAnswerSchema("employerLocationCount"),
+    primaryLicense: createSelectableAnswerSchema("primaryLicense"),
+    additionalLicenses: createMultiSelectAnswerSchema("additionalLicenses"),
+    massachusettsLicenseActive: createSelectableAnswerSchema("massachusettsLicenseActive"),
+    prescriptiveAuthority: createSelectableAnswerSchema("prescriptiveAuthority"),
+    boardCertified: createSelectableAnswerSchema("boardCertified"),
+    boardCertificationType: createSelectableAnswerSchema("boardCertificationType"),
+    independentAssessment: createSelectableAnswerSchema("independentAssessment"),
+    independentPrescribing: createSelectableAnswerSchema("independentPrescribing"),
+    treatmentPlanSignoffRequired: createSelectableAnswerSchema("treatmentPlanSignoffRequired"),
+    prescribingSignoffRequired: createSelectableAnswerSchema("prescribingSignoffRequired"),
+    worksUnderMedicalDirector: createSelectableAnswerSchema("worksUnderMedicalDirector"),
+    isMedicalDirector: createSelectableAnswerSchema("isMedicalDirector"),
+    injectorStatus: createSelectableAnswerSchema("injectorStatus"),
+    laserUnderOwnLicense: createSelectableAnswerSchema("laserUnderOwnLicense"),
+    licenseArrangement: createSelectableAnswerSchema("licenseArrangement"),
+    advancedTraining: createMultiSelectAnswerSchema("advancedTraining"),
+    deviceCertifications: createMultiSelectAnswerSchema("deviceCertifications"),
     employmentArrangement: createSelectableAnswerSchema("employmentArrangement"),
     weeklyHours: createSelectableAnswerSchema("weeklyHours"),
     employerTenure: createSelectableAnswerSchema("employerTenure"),
@@ -133,6 +158,10 @@ const surveyAnswersSchema = z
 
     for (const question of visibleQuestions) {
       const value = answers[question.id];
+
+      if (question.required === false) {
+        continue;
+      }
 
       if (question.input === "consent" && value !== true) {
         context.addIssue({
