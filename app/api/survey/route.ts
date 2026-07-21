@@ -1,5 +1,9 @@
 import { toSurveySubmissionRecord } from "@/lib/survey/transformers";
 import {
+  isPersistenceConfigurationError,
+  persistSurveySubmission,
+} from "@/lib/persistence/supabase";
+import {
   flattenSurveySubmissionIssues,
   surveySubmissionSchema,
 } from "@/lib/validation/survey";
@@ -41,6 +45,25 @@ export async function POST(request: Request) {
   const submissionRecord = toSurveySubmissionRecord(result.data, {
     userAgent: request.headers.get("user-agent"),
   });
+
+  try {
+    await persistSurveySubmission(result.data, submissionRecord);
+  } catch (error) {
+    const isConfigurationError = isPersistenceConfigurationError(error);
+
+    return Response.json(
+      {
+        ok: false,
+        error: {
+          code: isConfigurationError ? "SURVEY_STORAGE_NOT_CONFIGURED" : "SURVEY_STORAGE_FAILED",
+          message: isConfigurationError
+            ? "Survey storage is not configured yet. Add the Supabase environment variables and redeploy."
+            : "We could not save your anonymous response right now. Please try again in a moment.",
+        },
+      },
+      { status: isConfigurationError ? 503 : 500 },
+    );
+  }
 
   return Response.json({
     ok: true,

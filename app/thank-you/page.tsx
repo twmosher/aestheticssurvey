@@ -14,9 +14,9 @@ export default function ThankYouPage() {
               You are now part of the Massachusetts benchmark.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-[hsl(var(--muted-ink))] sm:text-lg">
-              Your participation helps build a more credible compensation picture for medical
-              aesthetics across Massachusetts. A private comparison and the broader report will be
-              shared once there is enough responsibly reviewed data.
+              Your response is helping Aesthetic Career Club build a more credible compensation
+              picture for medical aesthetics across Massachusetts. Private benchmark updates and the
+              broader report will be shared once enough responsibly reviewed data is in place.
             </p>
           </div>
           <div className="grid gap-4 border border-[hsl(var(--border))] bg-[hsl(var(--paper)/0.82)] p-5 sm:p-6">

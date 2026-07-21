@@ -5,7 +5,7 @@ import { REPORT_NAME, SITE_NAME } from "@/lib/constants";
 const DEFAULT_DESCRIPTION =
   "An anonymous compensation benchmark for injectors, aesthetic nurses, NPs, PAs, aestheticians and medical-aesthetic professionals across Massachusetts.";
 
-const DEFAULT_URL = "https://aestheticworkforce.com";
+const DEFAULT_URL = "https://aesthetic-career-club.vercel.app";
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_URL),

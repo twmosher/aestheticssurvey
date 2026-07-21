@@ -16,6 +16,6 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    exclude: [".next/**", "node_modules/**"],
+    exclude: [".next/**", "node_modules/**", "tests/e2e/**"],
   },
 });

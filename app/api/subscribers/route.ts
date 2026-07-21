@@ -1,4 +1,8 @@
 import {
+  isPersistenceConfigurationError,
+  persistSubscriberSubmission,
+} from "@/lib/persistence/supabase";
+import {
   flattenSubscriberSubmissionIssues,
   subscriberSubmissionSchema,
 } from "@/lib/validation/subscriber";
@@ -37,12 +41,35 @@ export async function POST(request: Request) {
     );
   }
 
+  let persistedSubscriber;
+
+  try {
+    persistedSubscriber = await persistSubscriberSubmission(result.data);
+  } catch (error) {
+    const isConfigurationError = isPersistenceConfigurationError(error);
+
+    return Response.json(
+      {
+        ok: false,
+        error: {
+          code: isConfigurationError
+            ? "SUBSCRIBER_STORAGE_NOT_CONFIGURED"
+            : "SUBSCRIBER_STORAGE_FAILED",
+          message: isConfigurationError
+            ? "Subscriber storage is not configured yet. Add the Supabase environment variables and redeploy."
+            : "We could not save your email right now. Please try again in a moment.",
+        },
+      },
+      { status: isConfigurationError ? 503 : 500 },
+    );
+  }
+
   return Response.json({
     ok: true,
     data: {
       anonymousToken: result.data.anonymousToken,
       email: result.data.email,
-      acceptedAt: new Date().toISOString(),
+      acceptedAt: persistedSubscriber.acceptedAt,
       nextPath: "/thank-you",
     },
   });
