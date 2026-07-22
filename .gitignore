@@ -1,0 +1,14 @@
+.DS_Store
+*.log
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.next
+coverage
+node_modules
+playwright-report
+test-results
+tsconfig.tsbuildinfo
+.vercel
